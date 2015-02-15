@@ -4,10 +4,6 @@ taggit-selectize
 
 django-taggit + selectize.js
 
-Documentation
--------------
-
-The full documentation is at https://taggit-selectize.readthedocs.org.
 
 Quickstart
 ----------
