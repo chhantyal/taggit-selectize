@@ -6,11 +6,11 @@ Auto-complete/auto-suggestion for django-taggit.
 
 [django-taggit](https://github.com/alex/django-taggit) + [selectize.js](https://github.com/brianreavis/selectize.js)
 
+![taggit-selectize demo screenshot](https://i.imgur.com/ryxW6TI.png)
+
 With `django-taggit`, you can attach tags in any Django models. However, user experience is not that good as it uses
 comma to separate multiple tags in same form field, and resulting in duplicate tags eg. Himalaya vs. Himalayas, Sublime-Text vs. Sublime Text etc.
 And you probably want auto-complete/auto-suggest feature when user types some characters in tag field. Thanks to selectize.js, we got that covered :)
-
-![taggit-selectize demo screenshot](https://i.imgur.com/ryxW6TI.png)
 
 
 Quickstart
