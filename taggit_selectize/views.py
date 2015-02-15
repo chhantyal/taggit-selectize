@@ -18,7 +18,7 @@ def get_tags_recommendation(request):
     query = request.GET.get('query')
     if query:
         limit = settings.TAGGIT_SELECTIZE_RECOMMENDATION_LIMIT
-        recommended_tags = Tag.objects.filter(name__icontains=query)[:limit].values('name')
+        recommended_tags = Tag.objects.filter(name__icontains=query).values('name')[:limit]
         tags = list(recommended_tags)
     else:
         tags = list(Tag.objects.values()[:10])
