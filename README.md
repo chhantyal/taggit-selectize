@@ -67,3 +67,5 @@ There is demo app included `example_app`.
 1. `cd example_app`
 2. `python manage.py migrate`
 3. `python manage.py runserver`
+
+Login username: `admin` password: `admin`
