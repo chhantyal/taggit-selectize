@@ -20,14 +20,13 @@ if sys.argv[-1] == 'publish':
     print("  git push --tags")
     sys.exit()
 
-readme = open('README.md').read()
 history = open('HISTORY.rst').read().replace('.. :changelog:', '')
 
 setup(
     name='taggit-selectize',
     version=version,
     description="""django-taggit + selectize.js""",
-    long_description=readme + '\n\n' + history,
+    long_description="""Auto-complete/auto-suggestion for django-taggit.""",
     author='Nar Chhantyal',
     author_email='nkchhantyal@gmail.com',
     url='https://github.com/chhantyal/taggit-selectize',
