@@ -6,6 +6,7 @@
 {% endblock %}
 
 {% block extrahead %}
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
     <!-- django admin style override to make taggit autocomplete work -->
     <style>
         div.field-tags {
@@ -24,7 +25,6 @@
 
 {% block footer %}
     <div id="footer"></div>
-    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
     <script src="{% static 'js/selectize.js' %}"></script>
     <script>
     $('#id_tags').selectize({
