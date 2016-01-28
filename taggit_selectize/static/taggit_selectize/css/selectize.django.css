@@ -1,5 +1,5 @@
 /**
- * selectize.default.css (v0.12.0) - Default Theme
+ * selectize.default.css (v0.12.1) - Default Theme
  * Copyright (c) 2013–2015 Brian Reavis & contributors
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
@@ -314,6 +314,24 @@
   opacity: 0.5;
   background-color: #fafafa;
 }
+
+/* Django style, based on default, goal is to fit Django 1.9 flat theme */
+.colM .aligned .selectize-input {
+  /* fix alignment in django admin */
+  width: 625px;
+}
+.selectize-control.plugin-remove_button [data-value] {
+  padding-right: 28px !important;
+}
+.selectize-control.plugin-remove_button [data-value] .remove {
+  padding: 5px 0 0 0;
+  border-left: 1px solid #2c5e83;
+  font-size: 16px;
+  width: 19px;
+}
+.selectize-control.plugin-remove_button [data-value].active .remove {
+  border-left-color: #2d698f;
+}
 .selectize-control.multi .selectize-input.has-items {
   padding-left: 5px;
   padding-right: 5px;
@@ -333,30 +351,16 @@
   background: none;
 }
 .selectize-control.multi .selectize-input [data-value] {
-  text-shadow: 0 1px 0 rgba(0, 51, 83, 0.3);
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-  background-color: #1b9dec;
-  background-image: -moz-linear-gradient(top, #1da7ee, #178ee9);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#1da7ee), to(#178ee9));
-  background-image: -webkit-linear-gradient(top, #1da7ee, #178ee9);
-  background-image: -o-linear-gradient(top, #1da7ee, #178ee9);
-  background-image: linear-gradient(to bottom, #1da7ee, #178ee9);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff1da7ee', endColorstr='#ff178ee9', GradientType=0);
-  -webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.2),inset 0 1px rgba(255,255,255,0.03);
-  box-shadow: 0 1px 0 rgba(0,0,0,0.2),inset 0 1px rgba(255,255,255,0.03);
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  border: none;
+  background-color: #205067;
+  padding: 5px 7px;
 }
 .selectize-control.multi .selectize-input [data-value].active {
-  background-color: #0085d4;
-  background-image: -moz-linear-gradient(top, #008fd8, #0075cf);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#008fd8), to(#0075cf));
-  background-image: -webkit-linear-gradient(top, #008fd8, #0075cf);
-  background-image: -o-linear-gradient(top, #008fd8, #0075cf);
-  background-image: linear-gradient(to bottom, #008fd8, #0075cf);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff008fd8', endColorstr='#ff0075cf', GradientType=0);
+  background-color: #236179;
+  border: none;
 }
 .selectize-control.single .selectize-input {
   -webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,0.8);
