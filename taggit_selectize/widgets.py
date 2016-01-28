@@ -47,6 +47,10 @@ class TagSelectize(forms.TextInput):
                                             '<span class="name">' + escape(item.name) + '</span>' +
                                         '</span>' +
                                     '</div>';
+                                },
+                                'item': function(item, escape) {
+                                    name = item.name.replace(/^"|"$/g, '');
+                                    return '<div class="item">' + escape(name) + '</div>';
                                 }
                             },
                             load: function(query, callback) {
