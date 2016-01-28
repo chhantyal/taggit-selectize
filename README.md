@@ -50,13 +50,13 @@ INSTALLED_APPS = (
 
 2. Update urls.py.
 ```
-urlpatterns = patterns('',
+urlpatterns = [
     ...
 
     url(r'^taggit/', include('taggit_selectize.urls')),
     url(r'^admin/', include(admin.site.urls)),
     ...
-)
+]
 ```
 
 3. Use the `TaggableManager` from taggit_selectize (instead of taggit) in your models.
