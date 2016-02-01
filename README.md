@@ -69,3 +69,10 @@ There is demo app included `example_app`.
 3. `python manage.py runserver`
 
 Login username: `admin` password: `admin`
+
+
+Versions
+--------
+1. 0.x Initial release with Django 1.5 - 1.8 support. Latest is 0.1.2
+
+2. 1.x Release with Django 1.9 support.
