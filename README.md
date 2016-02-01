@@ -73,6 +73,6 @@ Login username: `admin` password: `admin`
 
 Versions
 --------
-1. 0.x Initial release with Django 1.5 - 1.8 support. Latest is 0.1.2
+1. 0.x Initial release with Django 1.5 - 1.8 support. Latest upload on this series is `0.1.2`. Use this if you need old Django support.
 
 2. 1.x Release with Django 1.9 support.
