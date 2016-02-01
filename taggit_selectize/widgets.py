@@ -85,7 +85,7 @@ class TagSelectize(forms.TextInput):
             'add_precedence': "true" if settings.TAGGIT_SELECTIZE['ADD_PRECEDENCE'] else "false",
             'select_on_tab': "true" if settings.TAGGIT_SELECTIZE['SELECT_ON_TAB'] else "false",
             'plugins': ",".join(["\"{}\"".format(plugin) for plugin in js_plugins]),
-            'remote_url': reverse('selectize_tags_recommendation')
+            'remote_url': reverse('tags_recommendation')
         }
         return mark_safe("\n".join([html, js]))
 
