@@ -146,3 +146,6 @@ Versions
 1. 0.x Initial release with Django 1.5 - 1.8 support. Latest upload on this series is `0.1.2`. Use this if you need old Django support.
 
 2. 1.x Release with Django 1.9 support.
+
+3. 2.x This version might introduce backward incompatibility. It improves the way it works (widget instead of admin overrride) and adds many new features 
+[Thanks a ton to Nathan](https://github.com/chhantyal/taggit-selectize/pull/5).
