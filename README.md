@@ -13,10 +13,22 @@ comma to separate multiple tags in same form field, and resulting in duplicate t
 And you probably want auto-complete/auto-suggest feature when user types some characters in tag field. Thanks to selectize.js, we got that covered :)
 
 
+Features
+--------
+* Supports Django 1.8.x and Django 1.9.x
+* Supports >=Python2.7 and >=Python3.4
+* Simple installation, selectize.js 0.12.1 included
+* Will use jQuery install included in Django admin, no installation of jQuery needed
+* Will use custom jQuery object if it is installed, though
+* Themed to match new Django 1.9 flat theme
+* Exposes many selectize.js configuration options to your settings.py
+* Supports multiple TaggableManagers in a single model
+
+
 Quickstart
 ----------
 
-Install taggit-selectize::
+Install taggit-selectize:
 
     pip install taggit-selectize
 
@@ -24,39 +36,97 @@ Install taggit-selectize::
 Usage
 -----
 
-1. Put `taggit-selectize` in settings:
+1. Put `taggit_selectize` in settings:
 
 ```
 INSTALLED_APPS = (
     'django.contrib.admin',
     ...
     ...
+    'taggit',
     'taggit_selectize',
 )
 ```
 
 2. Update urls.py.
 ```
-urlpatterns = patterns('',
+urlpatterns = [
     ...
 
     url(r'^taggit/', include('taggit_selectize.urls')),
     url(r'^admin/', include(admin.site.urls)),
     ...
-)
+]
 ```
 
-3. Create `admin` dir inside templates folder. Create a template `base_site.html` and [copy paste this](https://github.com/chhantyal/taggit-selectize/blob/master/example_app/templates/admin/base_site.html).
-This has to override from project template dirs otherwise django will still load default `base_site.html` from `django.contrib.admin` app.
-Also, filesystem loader must be before app dir loader in settings like:
+3. Use the `TaggableManager` from taggit_selectize (instead of taggit) in your models.
+```
+from taggit_selectize.managers import TaggableManager
+
+class MyModel(models.Model):
+    tags = TaggableManager()
+```
+
+
+Configuration
+-------------
+In your settings.py (these are defaults):
 
 ```
-TEMPLATE_LOADERS = (
-    'django.template.loaders.filesystem.Loader',
-    'django.template.loaders.app_directories.Loader',
-)
+TAGGIT_SELECTIZE = {
+    'MINIMUM_QUERY_LENGTH': 2,
+    'RECOMMENDATION_LIMIT': 10,
+    'CSS_FILENAMES': ("taggit_selectize/css/selectize.django.css",),
+    'JS_FILENAMES': ("taggit_selectize/js/selectize.js",),
+    'DIACRITICS': True,
+    'CREATE': True,
+    'PERSIST': True,
+    'OPEN_ON_FOCUS': True,
+    'HIDE_SELECTED': True,
+    'CLOSE_AFTER_SELECT': False,
+    'LOAD_THROTTLE': 300,
+    'PRELOAD': False,
+    'ADD_PRECEDENCE': False,
+    'SELECT_ON_TAB': False,
+    'REMOVE_BUTTON': False,
+    'RESTORE_ON_BACKSPACE': False,
+    'DRAG_DROP': False,
+}
 ```
-You can also use outside of admin in same way.
+
+### MINIMUM_QUERY_LENGTH
+
+The minimum number of characters the user needs to type to cause an AJAX request to hit the server for autocompletion. Default: 2
+
+### RECOMMENDATION_LIMIT
+
+The maximum number of results to return to the user for recommendation. Default: 10
+
+### CSS_FILENAMES
+
+A tuple of CSS files to include on any page that has the taggit-selectize widget on it. Default: `("taggit_selectize/css/selectize.django.css",)`
+
+### JS_FILENAMES
+
+A tuple of JS files to include on any page that has the taggit-selectize widget on it. Default: `("taggit_selectize/js/selectize.js",)`
+
+### DIACRITICS, CREATE, PERSIST, OPEN_ON_FOCUS, HIDE_SELECTED, CLOSE_AFTER_SELECT, LOAD_THROTTLE, PRELOAD, ADD_PRECEDENCE, SELECT_ON_TAB
+
+Options that are passed directly to selectize.js.
+Please see [the selectize.js documentation](https://github.com/selectize/selectize.js/blob/master/docs/usage.md) for explanation
+
+### REMOVE_BUTTON
+
+Adds a remove button to each tag item by including the 'remove_button' plugin.
+
+### RESTORE_ON_BACKSPACE
+
+Adds the 'restore_on_backspace' plugin to selectize.js.
+
+### DRAG_DROP
+
+Adds the 'drag_drop' plugin to selectize.js. WARNING: This requires JQuery UI (Sortable) to be installed. If it's not, then
+selectize.js will throw an error in the console and refuse to run.
 
 
 Demo app
