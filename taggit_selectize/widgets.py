@@ -49,7 +49,7 @@ class TagSelectize(forms.TextInput):
                                     '</div>';
                                 },
                                 'item': function(item, escape) {
-                                    name = item.name.replace(/^"|"$/g, '');
+                                    name = item.name.replace(/^\s*"|"\s*$/g, '');
                                     return '<div class="item">' + escape(name) + '</div>';
                                 }
                             },
