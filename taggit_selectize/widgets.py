@@ -25,7 +25,7 @@ class TagSelectize(forms.TextInput):
             <script type="text/javascript">
                 (function($) {
                     $(document).ready(function() {
-                        $("#%(id)s").selectize({
+                        $("input[id=#%(id)s]").selectize({
                             valueField: 'name',
                             labelField: 'name',
                             searchField: 'name',
