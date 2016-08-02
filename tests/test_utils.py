@@ -1,6 +1,7 @@
 from django.test import TestCase
+from taggit.models import Tag
 
-from taggit_selectize.utils import parse_tags
+from taggit_selectize.utils import parse_tags, join_tags
 
 
 class TestUtils(TestCase):
@@ -48,6 +49,16 @@ class TestUtils(TestCase):
 
     def test_tag_parser_extra_quotes_and_commas(self):
         self.assertListEqual(parse_tags('""foo,",bar",,baz"""'), [',bar', 'baz', 'foo'])
+
+    def test_tag_joiner(self):
+        foo = Tag(name="foo", slug="foo")
+        bar = Tag(name="bar", slug="bar")
+        self.assertEqual(join_tags([foo, bar]), "bar,foo")
+
+        with self.settings(TAGGIT_SELECTIZE={'DELIMITER': ';'}):
+            self.assertEqual(join_tags([foo, bar]), "bar;foo")
+
+
 
 
 
