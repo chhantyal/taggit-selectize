@@ -18,6 +18,7 @@ default_settings = {
     'REMOVE_BUTTON': False,
     'RESTORE_ON_BACKSPACE': False,
     'DRAG_DROP': False,
+    'DELIMITER': ',',
 }
 
 user_settings = getattr(settings, 'TAGGIT_SELECTIZE', {})

@@ -123,3 +123,6 @@ TAGGIT_SELECTIZE = {
 # Configure Taggit to use our own parser that prevents tags from getting split on spaces. We only want comma separated
 # tags to properly work with Selectize.js
 TAGGIT_TAGS_FROM_STRING = 'taggit_selectize.utils.parse_tags'
+
+# Configure Taggit to use our tag joiner so that custom DELIMITERs are supported
+TAGGIT_STRING_FROM_TAGS = 'taggit_selectize.utils.join_tags'

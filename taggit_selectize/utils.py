@@ -2,7 +2,7 @@
 from django.utils import six
 from django.utils.encoding import force_text
 from taggit.utils import split_strip
-
+from .conf import settings
 
 def parse_tags(tagstring):
     """
@@ -53,9 +53,32 @@ def parse_tags(tagstring):
             to_be_split.append(''.join(buffer))
     if to_be_split:
         for chunk in to_be_split:
-            words.extend(split_strip(chunk, ','))
+            words.extend(split_strip(chunk, settings.TAGGIT_SELECTIZE['DELIMITER']))
     words = list(set(words))
     words.sort()
     return words
 
 
+def join_tags(tags):
+    """
+    Given list of ``Tag`` instances, creates a string representation of
+    the list suitable for editing by the user, such that submitting the
+    given string representation back without changing it will give the
+    same list of tags.
+
+    Tag names which contain DELIMITER will be double quoted.
+
+    Adapted from Taggit's _edit_string_for_tags()
+
+    Ported from Jonathan Buchanan's `django-tagging
+    <http://django-tagging.googlecode.com/>`_
+    """
+    names = []
+    delimiter = settings.TAGGIT_SELECTIZE['DELIMITER']
+    for tag in tags:
+        name = tag.name
+        if delimiter in name or ' ' in name:
+            names.append('"%s"' % name)
+        else:
+            names.append(name)
+    return delimiter.join(sorted(names))

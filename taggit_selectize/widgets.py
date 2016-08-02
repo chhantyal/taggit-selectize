@@ -39,6 +39,7 @@ class TagSelectize(forms.TextInput):
                             preload: %(preload)s,
                             addPrecedence: %(add_precedence)s,
                             selectOnTab: %(select_on_tab)s,
+                            delimiter: '%(delimiter)s',
                             plugins: [%(plugins)s],
                             render: {
                                 option: function(item, escape) {
@@ -84,6 +85,7 @@ class TagSelectize(forms.TextInput):
             'preload': "true" if settings.TAGGIT_SELECTIZE['PRELOAD'] else "false",
             'add_precedence': "true" if settings.TAGGIT_SELECTIZE['ADD_PRECEDENCE'] else "false",
             'select_on_tab': "true" if settings.TAGGIT_SELECTIZE['SELECT_ON_TAB'] else "false",
+            'delimiter': settings.TAGGIT_SELECTIZE['DELIMITER'],
             'plugins': ",".join(["\"{}\"".format(plugin) for plugin in js_plugins]),
             'remote_url': reverse('tags_recommendation')
         }

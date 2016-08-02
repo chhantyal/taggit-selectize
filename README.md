@@ -48,9 +48,10 @@ Usage
     ```
 
 2. Configured Taggit in your Django settings to use a custom string-to-tag parser that doesn't parse on spaces to match the functionality of
-Selectize.js
+Selectize.js, and a custom tag joiner that supports configurable delimiters.
     ```
     TAGGIT_TAGS_FROM_STRING = 'taggit_selectize.utils.parse_tags'
+    TAGGIT_STRING_FROM_TAGS = 'taggit_selectize.utils.join_tags'
     ```
 
 3. Update urls.py.
@@ -96,6 +97,7 @@ TAGGIT_SELECTIZE = {
     'REMOVE_BUTTON': False,
     'RESTORE_ON_BACKSPACE': False,
     'DRAG_DROP': False,
+    'DELIMITER': ','
 }
 ```
 
@@ -133,6 +135,10 @@ Adds the 'restore_on_backspace' plugin to selectize.js.
 Adds the 'drag_drop' plugin to selectize.js. WARNING: This requires JQuery UI (Sortable) to be installed. If it's not, then
 selectize.js will throw an error in the console and refuse to run.
 
+### DELIMITER
+
+Set the delimiter between tags, for example, ';' or '|'. Make sure you have set up the custom TAGGIT_STRING_FROM_TAGS for this to work properly
+with Taggit. Default is comma, ','.
 
 Demo app
 --------
