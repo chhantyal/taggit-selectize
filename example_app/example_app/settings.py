@@ -119,3 +119,7 @@ TAGGIT_SELECTIZE = {
     'SELECT_ON_TAB': True,
     'REMOVE_BUTTON': True,
 }
+
+# Configure Taggit to use our own parser that prevents tags from getting split on spaces. We only want comma separated
+# tags to properly work with Selectize.js
+TAGGIT_TAGS_FROM_STRING = 'taggit_selectize.utils.parse_tags'

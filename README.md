@@ -37,35 +37,40 @@ Usage
 -----
 
 1. Put `taggit_selectize` in settings:
+    ```
+    INSTALLED_APPS = (
+        'django.contrib.admin',
+        ...
+        ...
+        'taggit',
+        'taggit_selectize',
+    )
+    ```
 
-```
-INSTALLED_APPS = (
-    'django.contrib.admin',
-    ...
-    ...
-    'taggit',
-    'taggit_selectize',
-)
-```
+2. Configured Taggit in your Django settings to use a custom string-to-tag parser that doesn't parse on spaces to match the functionality of
+Selectize.js
+    ```
+    TAGGIT_TAGS_FROM_STRING = 'taggit_selectize.utils.parse_tags'
+    ```
 
-2. Update urls.py.
-```
-urlpatterns = [
-    ...
+3. Update urls.py.
+    ```
+    urlpatterns = [
+        ...
+    
+        url(r'^taggit/', include('taggit_selectize.urls')),
+        url(r'^admin/', include(admin.site.urls)),
+        ...
+    ]
+    ```
 
-    url(r'^taggit/', include('taggit_selectize.urls')),
-    url(r'^admin/', include(admin.site.urls)),
-    ...
-]
-```
-
-3. Use the `TaggableManager` from taggit_selectize (instead of taggit) in your models.
-```
-from taggit_selectize.managers import TaggableManager
-
-class MyModel(models.Model):
-    tags = TaggableManager()
-```
+4. Use the `TaggableManager` from taggit_selectize (instead of taggit) in your models.
+    ```
+    from taggit_selectize.managers import TaggableManager
+    
+    class MyModel(models.Model):
+        tags = TaggableManager()
+    ```
 
 
 Configuration
