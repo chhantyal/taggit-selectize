@@ -1,8 +1,14 @@
 from django import forms
-from django.core.urlresolvers import reverse
 from django.utils import six
 from django.utils.safestring import mark_safe
 from taggit.utils import edit_string_for_tags
+# For compatibility.
+from django import VERSION as DJANGO_VERSION
+is_post_10 = DJANGO_VERSION[:2] > (1, 10)
+if is_post_10:
+    from django.urls import reverse
+else:
+    from django.core.urlresolvers import reverse
 
 from .conf import settings
 
