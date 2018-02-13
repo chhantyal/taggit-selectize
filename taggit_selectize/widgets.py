@@ -1,10 +1,14 @@
 from django import forms
-from django.core.urlresolvers import reverse
 from django.utils import six
 from django.utils.safestring import mark_safe
 from taggit.utils import edit_string_for_tags
 
 from .conf import settings
+
+try:
+    from django.urls import reverse  # Django 1.10+
+except ImportError:
+    from django.core.urlresolvers import reverse
 
 
 class TagSelectize(forms.TextInput):
