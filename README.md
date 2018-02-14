@@ -28,15 +28,15 @@ Quickstart
 ----------
 
 Install taggit-selectize:
-
-    pip install taggit-selectize
-
+```bash
+pip install taggit-selectize
+```
 
 Usage
 -----
 
 1. Put `taggit_selectize` in settings:
-    ```
+    ```python
     INSTALLED_APPS = (
         'django.contrib.admin',
         ...
@@ -48,13 +48,13 @@ Usage
 
 2. Configured Taggit in your Django settings to use a custom string-to-tag parser that doesn't parse on spaces to match the functionality of
 Selectize.js, and a custom tag joiner that supports configurable delimiters.
-    ```
+    ```python
     TAGGIT_TAGS_FROM_STRING = 'taggit_selectize.utils.parse_tags'
     TAGGIT_STRING_FROM_TAGS = 'taggit_selectize.utils.join_tags'
     ```
 
 3. Update urls.py.
-    ```
+    ```python
     urlpatterns = [
         ...
     
@@ -65,7 +65,7 @@ Selectize.js, and a custom tag joiner that supports configurable delimiters.
     ```
 
 4. Use the `TaggableManager` from taggit_selectize (instead of taggit) in your models.
-    ```
+    ```python
     from taggit_selectize.managers import TaggableManager
     
     class MyModel(models.Model):
@@ -77,7 +77,7 @@ Configuration
 -------------
 In your settings.py (these are defaults):
 
-```
+```python
 TAGGIT_SELECTIZE = {
     'MINIMUM_QUERY_LENGTH': 2,
     'RECOMMENDATION_LIMIT': 10,
