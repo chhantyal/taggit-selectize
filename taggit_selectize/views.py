@@ -1,10 +1,9 @@
 import json
 
 from django.http import HttpResponse
-
+from django.utils.module_loading import import_string
 from taggit.models import Tag
 from .conf import settings
-
 
 def get_tags_recommendation(request):
     """
@@ -14,10 +13,16 @@ def get_tags_recommendation(request):
     """
     query = request.GET.get('query')
     limit = settings.TAGGIT_SELECTIZE['RECOMMENDATION_LIMIT']
+
+    try:
+        cls = import_string(settings.TAGGIT_SELECTIZE_THROUGH)
+    except AttributeError:
+        cls = Tag
+
     if query:
-        tags = Tag.objects.filter(name__icontains=query).values('name')[:limit]
+        tags = cls.objects.filter(name__icontains=query).values('name')[:limit]
     else:
-        tags = Tag.objects.values()[:limit]
+        tags = cls.objects.values()[:limit]
 
     data = json.dumps({
         'tags': list(tags)
