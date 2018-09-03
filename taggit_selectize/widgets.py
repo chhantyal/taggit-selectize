@@ -10,6 +10,12 @@ try:
 except ImportError:
     from django.core.urlresolvers import reverse
 
+def bool_or_str(val):
+   if val == True:
+      return 'true'
+   elif val == False:
+      return 'false'
+   return val
 
 class TagSelectize(forms.TextInput):
     def render(self, name, value, attrs=None, renderer=None):
@@ -80,13 +86,13 @@ class TagSelectize(forms.TextInput):
             'minimum_query_length': settings.TAGGIT_SELECTIZE['MINIMUM_QUERY_LENGTH'],
             'recommendation_limit': settings.TAGGIT_SELECTIZE['RECOMMENDATION_LIMIT'],
             'diacritics': "true" if settings.TAGGIT_SELECTIZE['DIACRITICS'] else "false",
-            'create': "true" if settings.TAGGIT_SELECTIZE['CREATE'] else "false",
+            'create': bool_or_str(settings.TAGGIT_SELECTIZE['CREATE']),
             'persist': "true" if settings.TAGGIT_SELECTIZE['PERSIST'] else "false",
             'open_on_focus': "true" if settings.TAGGIT_SELECTIZE['OPEN_ON_FOCUS'] else "false",
             'hide_selected': "true" if settings.TAGGIT_SELECTIZE['HIDE_SELECTED'] else "false",
             'close_after_select': "true" if settings.TAGGIT_SELECTIZE['CREATE'] else "false",
             'load_throttle': settings.TAGGIT_SELECTIZE['LOAD_THROTTLE'],
-            'preload': "true" if settings.TAGGIT_SELECTIZE['PRELOAD'] else "false",
+            'preload': bool_or_str(settings.TAGGIT_SELECTIZE['PRELOAD']),
             'add_precedence': "true" if settings.TAGGIT_SELECTIZE['ADD_PRECEDENCE'] else "false",
             'select_on_tab': "true" if settings.TAGGIT_SELECTIZE['SELECT_ON_TAB'] else "false",
             'delimiter': settings.TAGGIT_SELECTIZE['DELIMITER'],
