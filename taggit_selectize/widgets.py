@@ -20,7 +20,13 @@ def bool_or_str(val):
 class TagSelectize(forms.TextInput):
     def render(self, name, value, attrs=None, renderer=None):
         if value is not None and not isinstance(value, six.string_types):
-            value = edit_string_for_tags([o.tag for o in value.select_related("tag")])
+            if isinstance(value, list):
+                # django-taggit 1.0 and up
+                value = edit_string_for_tags(value)
+            else:
+                # django-taggit 0.24.0 and below
+                value = edit_string_for_tags([o.tag for o in value.select_related("tag")])
+
         html = super(TagSelectize, self).render(name, value, attrs)
 
         js_plugins = []
