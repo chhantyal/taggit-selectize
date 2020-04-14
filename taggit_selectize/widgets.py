@@ -1,5 +1,5 @@
 from django import forms
-from django.utils import six
+import six
 from django.utils.safestring import mark_safe
 from taggit.utils import edit_string_for_tags
 
