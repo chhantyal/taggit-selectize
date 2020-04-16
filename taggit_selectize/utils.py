@@ -1,5 +1,5 @@
 # Miscellaneous utilities
-from django.utils import six
+import six
 from django.utils.encoding import force_text
 from taggit.utils import split_strip
 from .conf import settings
