@@ -27,7 +27,7 @@ class TagSelectize(forms.TextInput):
                 # django-taggit 0.24.0 and below
                 value = edit_string_for_tags([o.tag for o in value.select_related("tag")])
 
-        html = super(TagSelectize, self).render(name, value, attrs)
+        html = super(TagSelectize, self).render(name, value, attrs, renderer)
 
         js_plugins = []
         if settings.TAGGIT_SELECTIZE['REMOVE_BUTTON']:
