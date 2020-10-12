@@ -41,7 +41,7 @@ class TagSelectize(forms.TextInput):
             <script type="text/javascript">
                 (function($) {
                     $(document).ready(function() {
-                        django.jQuery("input[id=%(id)s]").selectize({
+                        $("input[id=%(id)s]").selectize({
                             valueField: 'name',
                             labelField: 'name',
                             searchField: 'name',
