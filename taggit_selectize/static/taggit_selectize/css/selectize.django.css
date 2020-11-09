@@ -318,7 +318,9 @@
 /* Django style, based on default, goal is to fit Django 1.9 flat theme */
 .colM .aligned .selectize-input {
   /* fix alignment in django admin */
-  width: 625px;
+  max-width: 625px;
+  min-width: 200px;
+  width: 100%;
 }
 .selectize-control.plugin-remove_button [data-value] {
   padding-right: 28px !important;
