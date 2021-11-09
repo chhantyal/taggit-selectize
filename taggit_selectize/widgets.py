@@ -5,10 +5,8 @@ from taggit.utils import edit_string_for_tags
 
 from .conf import settings
 
-try:
-    from django.urls import reverse  # Django 1.10+
-except ImportError:
-    from django.core.urlresolvers import reverse
+from django.urls import reverse
+
 
 def bool_or_str(val):
    if val == True:
