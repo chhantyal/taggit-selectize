@@ -1,2 +1,2 @@
-django>=1.8.8
+django>=2.2
 django-taggit>=0.18.0
