@@ -19,6 +19,7 @@ if not settings.configured:
             'tests',
         ],
         MIDDLEWARE_CLASSES=[],
+        ROOT_URLCONF='taggit_selectize.urls',
     )
 
 

@@ -1,6 +1,6 @@
 # Miscellaneous utilities
 import six
-from django.utils.encoding import force_text
+from django.utils.encoding import force_str
 from taggit.utils import split_strip
 from .conf import settings
 
@@ -20,7 +20,7 @@ def parse_tags(tagstring):
     if not tagstring:
         return []
 
-    tagstring = force_text(tagstring)
+    tagstring = force_str(tagstring)
 
     words = []
     buffer = []
