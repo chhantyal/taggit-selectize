@@ -14,7 +14,7 @@ And you probably want auto-complete/auto-suggest feature when user types some ch
 
 Features
 --------
-* Supports Django 1.8.x and Django 1.9.x
+* Supports Django >= 2.2
 * Supports >=Python2.7 and >=Python3.4
 * Simple installation, selectize.js 0.12.1 included
 * Will use jQuery install included in Django admin, no installation of jQuery needed
